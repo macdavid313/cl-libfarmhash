@@ -11,7 +11,12 @@
                 #:foreign-slot-value
                 #:translate-from-foreign
                 #:with-foreign-string)
-  (:nicknames #:libfarmhash #:farm))
+  (:nicknames #:libfarmhash #:farmhash #:farm)
+  (:export #:farmhash
+           #:farmhash32 #:farmhash32-with-seed           
+           #:farmhash64 #:farmhash64-with-seed #:farmhash64-with-seeds
+           #:farmhash128 #:farmhash128-with-seed
+           #:farmhash-fingerprint32 #:farmhash-fingerprint64 #:farmhash-fingerprint128))
 (in-package #:cl-libfarmhash)
 
 ;;; Compile and Load External C Module
@@ -50,6 +55,7 @@
         (skip "Skip loading libfarmhash.")
       (cffi:use-foreign-library libfarmhash))))
 
+;;; C types
 (defctype size-t :unsigned-int)
 
 (defcstruct (uint128 :size 16)
@@ -59,6 +65,7 @@
 (defctype uint128 (:struct uint128))
 
 (defmethod translate-from-foreign (ptr (type uint128-tclass))
+  "Translate a c struct, `uint128`, to a Lisp integer."
   (let ((a (foreign-slot-value ptr 'uint128 'a)) ;; low64
         (b (foreign-slot-value ptr 'uint128 'b))) ;; high64
     (logior (ash b 64) a)))
@@ -156,11 +163,11 @@ May change from time to time, may differ on different platforms, may differ depe
                          :pointer c_seed
                          uint128)))))
 
-(define-farmhash-function "farmhash_fingerprint32" :uint32
+(define-farmhash-function ("farmhash_fingerprint32" farmhash-fingerprint32) :uint32
   "Fingerprint function for a byte array. Most useful in 32-bit binaries.")
 
-(define-farmhash-function "farmhash_fingerprint64" :uint64
+(define-farmhash-function ("farmhash_fingerprint64" farmhash-fingerprint64) :uint64
   "Fingerprint function for a byte array.")
 
-(define-farmhash-function "farmhash_fingerprint128" uint128
+(define-farmhash-function ("farmhash_fingerprint128" farmhash-fingerprint128) uint128
   "Fingerprint function for a byte array.")

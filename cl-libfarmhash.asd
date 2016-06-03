@@ -17,7 +17,7 @@
 (defsystem cl-libfarmhash
   :version "0.1"
   :author "David Gu"
-  :license ""
+  :license "MIT"
   :depends-on (#-asdf3 :uiop
                :cffi :cffi-libffi)
   :components ((:module "src"
@@ -35,5 +35,4 @@
                                :element-type 'character
                                :fill-pointer t)))
           (setf (fill-pointer seq) (read-sequence seq stream))
-          seq)))
-  :in-order-to ((test-op (test-op cl-libfarmhash-test))))
+          seq))))
