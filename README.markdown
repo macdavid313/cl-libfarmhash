@@ -1,5 +1,7 @@
 # Cl-Libfarmhash - Common Lisp Binding for Google's [Farmhash](https://github.com/google/farmhash).
 
+<a href="http://quickdocs.org/cl-libfarmhash"><img src="http://quickdocs.org/badge/cl-libfarmhash.svg" /></a>
+
 ## Usage
 
 **note:** _all results shown below are from a 64bit Mac OS platform._
