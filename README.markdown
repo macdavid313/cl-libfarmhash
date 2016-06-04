@@ -1,4 +1,4 @@
-# Cl-Libfarmhash - Common Lisp Binding for Google's [Farmhash](https://github.com/google/farmhash).
+# cl-libfarmhash - Common Lisp Binding for Google's [Farmhash](https://github.com/google/farmhash).
 
 <a href="http://quickdocs.org/cl-libfarmhash"><img src="http://quickdocs.org/badge/cl-libfarmhash.svg" /></a>
 
