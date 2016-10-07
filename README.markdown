@@ -89,8 +89,8 @@ Just `(ql:quickload :cl-libfarmhash)`. All exported functions has been simply te
 
 ## Author
 
-* David Gu (david_guru@gty.org.in)
+* David Gu (macdavid313@gmail.com)
 
 ## Copyright
 
-Copyright (c) 2016 David Gu (david_guru@gty.org.in)
+Copyright (c) 2016 David Gu (macdavid313@gmail.com)
